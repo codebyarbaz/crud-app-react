@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 // Components
-import AddMember from "../addMember/addMember";
-import MemberList from "../memberList/memberList";
+import AddMember from "../../components/addMember/addMember";
+import MemberList from "../../components/memberList/memberList";
 
 // Css Styles
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -15,16 +15,11 @@ export default class App extends Component {
         {
           name: "Arbaz Tyagi",
           position: "CEO",
-          profileURL: "https://arbaztyagi.com"
+          profileURL: "https://google.com"
         },
         {
           name: "Diksha Jamwal",
           position: "CEO",
-          profileURL: "https://google.com"
-        },
-        {
-          name: "New Boy",
-          position: "DevOps",
           profileURL: "https://google.com"
         }
       ],
@@ -100,28 +95,12 @@ export default class App extends Component {
           editable={this.state.editable}
           updateInputValue={this.onKeyPress}
         />
-        <hr className="mb-5" />
-        <div className="container">
-          <div className="row justify-content-center">
-            {this.state.members.map((member, index) => {
-              return (
-                <div
-                  className="col-lg-4 col-md-6 col-12 mb-lg-5 mb-4"
-                  key={index}
-                >
-                  <MemberList
-                    i={index}
-                    name={member.name}
-                    position={member.position}
-                    profileURL={member.profileURL}
-                    deleted={() => this.deleteMember(index)}
-                    editted={() => this.showEditButton(index)}
-                  />
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        <hr className="mb-lg-5 mb-3" />
+        <MemberList
+          members={this.state.members}
+          deleteMember={this.state.deleteMember}
+          showEditButton={this.state.showEditButton}
+        />
       </div>
     );
   }
