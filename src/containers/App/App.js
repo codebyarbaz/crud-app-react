@@ -69,11 +69,11 @@ export default class App extends Component {
     });
   };
 
-  deleteMember(index) {
+  deleteMember = index => {
     const members = [...this.state.members];
     members.splice(index, 1);
     this.setState({ ...this.state, members });
-  }
+  };
 
   showEditButton = index => {
     const memberDetails = { ...this.state.members[index] };
@@ -98,8 +98,8 @@ export default class App extends Component {
         <hr className="mb-lg-5 mb-3" />
         <MemberList
           members={this.state.members}
-          deleteMember={this.state.deleteMember}
-          showEditButton={this.state.showEditButton}
+          deleteMember={this.deleteMember}
+          showEditButton={this.showEditButton}
         />
       </div>
     );
